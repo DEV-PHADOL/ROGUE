@@ -1,11 +1,13 @@
 <%- include('./partials/header') %>
 
 
-        <!-- <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
-            <span class="inline-block mt-1 mb-1 text-white">
-
-            </span>
-        </div> -->
+        <% if(error.length>0){ %>
+            <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+                <span class="inline-block mt-1 mb-1 text-white">
+                    <%= error %>
+                </span>
+            </div>
+        <% } %>
 
             <div class="w-full h-screen flex px-20 bg-zinc-900 text-white font-['Roboto'] ">
                 <div class="w-1/2 flex py-60 justify-center h-screen">
