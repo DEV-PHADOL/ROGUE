@@ -1,5 +1,6 @@
 const express = require('express');
 const isLoggedin = require('../middlewares/isLoggedin');
+const productModel = require('../models/product-model');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
@@ -7,8 +8,13 @@ router.get('/',(req,res)=>{
     res.render('index',{error});
 });
 
-router.get('/shop',isLoggedin,(req,res)=>{
-    res.render('shop');
+router.get('/shop',isLoggedin,async (req,res)=>{
+    let products = await productModel.find();    
+    res.render('shop',{ products });
+});
+
+router.get('/logout',isLoggedin,(req,res)=>{
+    res.render('/');
 });
 
 module.exports = router;
