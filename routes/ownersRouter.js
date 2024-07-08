@@ -3,11 +3,7 @@ const router = express.Router();
 const ownerModel = require('../models/owner-model');
 require('dotenv').config();
 
-router.get('/',(req,res)=>{
-    res.send("hey");
-});
-
-if(process.env.NODE_ENV){
+if(process.env.NODE_ENV === "development"){
     router.post('/create',async (req,res)=>{
         let owner = await ownerModel.find();
         if(owner.length > 0){
@@ -24,5 +20,10 @@ if(process.env.NODE_ENV){
         res.status(201).send(createdOwner);
     });
 }
+
+router.get("/admin",(req,res)=>{
+    let success = req.flash('success');
+    res.render('createproducts',{ success });   
+});
 
 module.exports = router;

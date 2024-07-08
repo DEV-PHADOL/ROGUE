@@ -8,7 +8,7 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/shop',isLoggedin,(req,res)=>{
-    res.send('correct');
+    res.render('shop');
 });
 
 module.exports = router;
