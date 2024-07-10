@@ -47,7 +47,8 @@ module.exports.loginUser = async (req,res)=>{
             let token = generateToken(user);
             res.cookie("token",token);
             let products = await productModel.find();
-            res.render('shop',{products}); 
+            let success = req.flash('success');
+            res.render('shop',{products , success}); 
         }
         else{
             req.flash('error',"Email or Password is incorrect");
